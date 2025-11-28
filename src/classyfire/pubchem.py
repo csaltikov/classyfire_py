@@ -1,4 +1,5 @@
 import requests
+from time import sleep
 
 
 def get_inchikey(compound):
@@ -11,13 +12,37 @@ def get_inchikey(compound):
 
 	try:
 		response = session.get(URL)
+		if response.raise_for_status():
+			return None
 		return response.text.rstrip()
 	except requests.exceptions.RequestException as e:
-		print(f"An general error occurred during the request: {e}")
 		return None
+
+
+def batch_get(compounds):
+	batch_size = 20
+	sleep_interval = 5
+	results = []
+	for start in range(0, len(compounds), batch_size):
+		end = start + batch_size
+		for compound in compounds[start:end]:
+			result = get_inchikey(compound)
+			if result:
+				result = result.split()[0]
+			results.append(result)
+		if end % 10 == 10:
+			print(len(results))
+		if end < len(compounds):
+			sleep(sleep_interval)
+	return results
 
 
 if __name__ == "__main__":
 	compound = "pyruvate"
 	inchikey = get_inchikey(compound)
 	print(inchikey)
+
+	compounds_ = ["pyruvate", "fumarate", "succinate", "foobar"]
+
+	res = batch_get(compounds_)
+	print(res)

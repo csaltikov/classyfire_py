@@ -9,10 +9,13 @@ class ClassyFire:
 		self.session.headers.update({
 			'User-Agent': 'ClassyFire Python Client/1.0 (contact@example.com)'
 			})
+		self.headers =({
+					'User-Agent': 'ClassyFire Python Client/1.0 (contact@example.com)'
+					})
 
 	def process_response(self, url):
 		try:
-			response = self.session.get(url=url)
+			response = requests.get(url=url, headers=self.headers)
 			if response.status_code == 404:
 				print("Entity not found (404)")
 				return None
