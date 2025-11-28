@@ -1,7 +1,7 @@
 [project]
 name = "classyfire"
 version = "0.1.0"
-description = "Add your description here"
+description = "Classify chemical compounds using ClassyFire and Pubmed API"
 readme = "README.md"
 authors = [
     { name = "csaltikov", email = "saltikov@ucsc.edu" }
