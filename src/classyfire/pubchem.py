@@ -14,26 +14,29 @@ def get_inchikey(compound):
 		response = session.get(URL)
 		if response.raise_for_status():
 			return None
-		return response.text.rstrip()
+		return response.text.rstrip().split()
 	except requests.exceptions.RequestException as e:
 		return None
 
 
 def batch_get(compounds):
 	batch_size = 20
-	sleep_interval = 5
+	sleep_interval = 2
 	results = []
+	i = 0
 	for start in range(0, len(compounds), batch_size):
 		end = start + batch_size
 		for compound in compounds[start:end]:
 			result = get_inchikey(compound)
 			if result:
-				result = result.split()[0]
+				result = result[0]
 			results.append(result)
-		if end % 10 == 10:
-			print(len(results))
+			if i % 10 == 0:
+				print(i)
+			i += 1
 		if end < len(compounds):
 			sleep(sleep_interval)
+
 	return results
 
 
