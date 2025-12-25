@@ -8,7 +8,7 @@ INITIAL_WAIT_TIME = 2  # Start with a 2-second wait
 
 ##
 logging.basicConfig(
-    level=logging.DEBUG,            # or DEBUG for more detail
+    level=logging.INFO,            # or DEBUG for more detail
     format="%(levelname)s - %(message)s"
 )
 
