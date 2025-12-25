@@ -7,7 +7,11 @@ authors = [
     { name = "csaltikov", email = "saltikov@ucsc.edu" }
 ]
 requires-python = ">=3.10"
-dependencies = ["requests", "pandas"]
+dependencies = [
+    "requests",
+    "pandas",
+    "pandas-stubs==2.3.3.251201",
+]
 
 [project.scripts]
 classyfire = "classyfire:main"

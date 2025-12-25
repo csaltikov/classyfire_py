@@ -9,7 +9,7 @@ class TestPubchem(unittest.TestCase):
 
     def test_get_inhcikey(self):
         results = pubchem.get_inchikey(self.pyruvate)
-        expected = "LCTONWCANYUPML-UHFFFAOYSA-M"
+        expected = ["LCTONWCANYUPML-UHFFFAOYSA-M"]
         self.assertEqual(results, expected)
 
 
