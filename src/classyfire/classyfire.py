@@ -1,7 +1,12 @@
 import pandas as pd
 import requests
+import requests_cache
 import time
+from datetime import timedelta
 import logging
+
+
+requests_cache.install_cache("classyfire_cache", expire_after=timedelta(days=7))
 
 MAX_RETRIES = 5  # Limit the total number of attempts
 INITIAL_WAIT_TIME = 2  # Start with a 2-second wait

@@ -1,5 +1,9 @@
 import requests
+import requests_cache
 from time import sleep
+from datetime import timedelta
+
+requests_cache.install_cache("classyfire_cache", expire_after=timedelta(days=7))
 
 
 def get_inchikey(compound):
