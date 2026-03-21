@@ -20,8 +20,8 @@ returns in list form
 ```
 ```
 compounds = ["pyruvate", "fumarate", "succinate", "foobar"]
-results = pubchem.batch_get(compounds_)
-print(res)
+results = pubchem.batch_get(compounds)
+print(results)
 ```
 
 ```
